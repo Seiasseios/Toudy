@@ -988,6 +988,255 @@
     .site-footer    { padding: 32px 52px; }
   }
 
+
+  /* ===== CARRINHO / PRODUTO ===== */
+  .image-error {
+    position: relative;
+    background: #222 !important;
+  }
+
+  .image-error::after {
+    content: 'IMAGEM INDISPONÍVEL';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: #777;
+  }
+
+  .product-card[onclick] { cursor: pointer; }
+
+  .cart-overlay,
+  .product-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.72);
+    z-index: 2000;
+    display: none;
+  }
+
+  .cart-overlay.active,
+  .product-overlay.active { display: block; }
+
+  .cart-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(440px, 92vw);
+    height: 100%;
+    background: #161616;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding: 28px;
+    overflow-y: auto;
+  }
+
+  .cart-header,
+  .product-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .cart-header h2,
+  .product-modal-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .close-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .cart-empty {
+    color: var(--gray);
+    text-align: center;
+    padding: 50px 10px;
+  }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .cart-item img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    background: #2a2a2a;
+    border-radius: 8px;
+  }
+
+  .cart-item-name { font-weight: 600; }
+  .cart-item-size { color: var(--gray); font-size: 13px; margin-top: 4px; }
+  .cart-item-price { margin-top: 6px; font-weight: 700; }
+
+  .cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .remove-item {
+    border: none;
+    background: none;
+    color: #ff6666;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .cart-footer {
+    margin-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .checkout-btn,
+  .add-cart-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 7px;
+  }
+
+  .product-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(820px, 92vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 28px;
+    border-radius: 12px;
+  }
+
+  .product-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .product-modal-image {
+    min-height: 360px;
+    background: #2a2a2a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-modal-image img {
+    max-width: 100%;
+    max-height: 430px;
+    object-fit: contain;
+  }
+
+  .product-modal-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    line-height: 0.95;
+    margin-bottom: 14px;
+  }
+
+  .modal-price {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  .size-label {
+    color: var(--gray);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .size-options {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+
+  .size-option {
+    width: 48px;
+    height: 42px;
+    background: #222;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+
+  .size-option.active {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .cart-count {
+    position: absolute;
+    transform: translate(12px, -12px);
+    background: #fff;
+    color: #000;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+    .product-modal-body { grid-template-columns: 1fr; }
+    .product-modal-image { min-height: 260px; }
+    .product-modal-info h3 { font-size: 40px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1002,7 +1251,7 @@
     <a onclick="showPage('catalog'); showCat('moletoms')">Moletoms</a>
     <a onclick="showPage('catalog'); showCat('polos')">Polos</a>
   </div>
-  <button class="cart-btn">🛒</button>
+  <button class="cart-btn" onclick="openCart()" aria-label="Abrir carrinho">🛒<span id="cart-count" class="cart-count">0</span></button>
 </nav>
 
 <!-- ===== HOME ===== -->
@@ -1064,7 +1313,7 @@
   <!-- ABOUT -->
   <section class="about-section">
     <div class="about-bg">
-      <img src="b1.png" alt="Toudy About" onerror="this.style.background='#111'">
+      <img src="b1.png" alt="Toudy About" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
       <h2 class="about-title">O QUE<br>SOMOS?</h2>
     </div>
     <div class="about-content">
@@ -1079,7 +1328,7 @@
   <!-- MANIFESTO -->
   <section class="manifesto-section">
     <div class="manifesto-art">
-      <img src="c1.png" alt="Arte" onerror="this.style.background='#111'">
+      <img src="c1.png" alt="Arte" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
     </div>
     <div class="manifesto-text">
       <h2>NÃO VENDEMOS<br>APENAS ROUPA,<br>VENDEMOS<br>ARTE.</h2>
@@ -1108,7 +1357,7 @@
     <div class="products-grid">
       <div class="product-card" onclick="showPage('catalog'); showCat('camisetas')">
         <div class="product-card-img">
-          <img src="h1.png" alt="Camisa oversized tigre" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="h1.png" alt="Camisa oversized tigre" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Camisa oversized</span>
@@ -1117,7 +1366,7 @@
       </div>
       <div class="product-card" onclick="showPage('catalog'); showCat('moletoms')">
         <div class="product-card-img">
-          <img src="j1.png" alt="Moletom com touca" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="j1.png" alt="Moletom com touca" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Moletom com touca</span>
@@ -1126,7 +1375,7 @@
       </div>
       <div class="product-card" onclick="showPage('catalog'); showCat('camisetas')">
         <div class="product-card-img">
-          <img src="h3.png" alt="Camisa manga longa" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="h3.png" alt="Camisa manga longa" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Camisa manga longa</span>
@@ -1190,7 +1439,7 @@
       <p class="contact-cta">FIQUE DE OLHO PARA<br>OS DESCONTOS!!!</p>
     </div>
     <div class="contact-right">
-      <img src="f1.png" alt="Novos Drops" onerror="this.style.background='#333'">
+      <img src="f1.png" alt="Novos Drops" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
       <div class="drops-badge">NOVOS DROPS EM BREVE!</div>
     </div>
   </section>
@@ -1267,30 +1516,30 @@
   <div id="cat-camisetas" class="catalog-items active">
     <div class="catalog-section-header">
       <h2>CAMISETAS.</h2>
-      <button class="back-link" onclick="showPage('home')">VOLTAR AO CATÁLOGO.</button>
+      <button class="back-link" onclick="showPage('catalog'); showCat('camisetas')">VOLTAR AO CATÁLOGO.</button>
     </div>
     <div class="products-grid">
-      <div class="product-card">
+      <div class="product-card" onclick="openProduct('camiseta', 'Camisa oversized tigre', 149.00, 'h1.png')">
         <div class="product-card-img">
-          <img src="h1.png" alt="Camisa oversized tigre" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="h1.png" alt="Camisa oversized tigre" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Camisa oversized tigre</span>
           <span class="product-price">R$149,00</span>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card" onclick="openProduct('camiseta', 'Camisa oversized zepiquenu', 149.00, 'h2.png')">
         <div class="product-card-img">
-          <img src="h2.png" alt="Camisa oversized zepiquenu" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="h2.png" alt="Camisa oversized zepiquenu" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Camisa oversized zepiquenu</span>
           <span class="product-price">R$149,00</span>
         </div>
       </div>
-      <div class="product-card">
+      <div class="product-card" onclick="openProduct('camiseta', 'Camisa oversized preta', 149.00, 'h3.png')">
         <div class="product-card-img">
-          <img src="h3.png" alt="Camisa oversized preta" onerror="this.src=''; this.parentElement.style.background='#222'">
+          <img src="h3.png" alt="Camisa oversized preta" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
         </div>
         <div class="product-card-info">
           <span class="product-name">Camisa oversized preta</span>
@@ -1304,13 +1553,13 @@
   <div id="cat-calcas" class="catalog-items">
     <div class="catalog-section-header">
       <h2>CALÇAS.</h2>
-      <button class="back-link" onclick="showPage('home')">VOLTAR AO CATÁLOGO.</button>
+      <button class="back-link" onclick="showPage('catalog'); showCat('camisetas')">VOLTAR AO CATÁLOGO.</button>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
       <div class="products-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="product-card">
+        <div class="product-card" onclick="openProduct('calca', 'Calça alfaiate', 249.90, 'i1.png')">
           <div class="product-card-img">
-            <img src="i1.png" alt="Calça alfaiate" onerror="this.src=''; this.parentElement.style.background='#222'">
+            <img src="i1.png" alt="Calça alfaiate" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
           </div>
           <div class="product-card-info">
             <span class="product-name">Calça alfaiate.</span>
@@ -1343,13 +1592,13 @@
   <div id="cat-moletoms" class="catalog-items">
     <div class="catalog-section-header">
       <h2>MOLETOMS.</h2>
-      <button class="back-link" onclick="showPage('home')">VOLTAR AO CATÁLOGO.</button>
+      <button class="back-link" onclick="showPage('catalog'); showCat('camisetas')">VOLTAR AO CATÁLOGO.</button>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
       <div class="products-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="product-card">
+        <div class="product-card" onclick="openProduct('moletom', 'Moletom com touca', 274.99, 'j1.png')">
           <div class="product-card-img">
-            <img src="j1.png" alt="Moletom com touca" onerror="this.src=''; this.parentElement.style.background='#222'">
+            <img src="j1.png" alt="Moletom com touca" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
           </div>
           <div class="product-card-info">
             <span class="product-name">Moletom com touca</span>
@@ -1382,13 +1631,13 @@
   <div id="cat-polos" class="catalog-items">
     <div class="catalog-section-header">
       <h2>POLOS.</h2>
-      <button class="back-link" onclick="showPage('home')">VOLTAR AO CATÁLOGO.</button>
+      <button class="back-link" onclick="showPage('catalog'); showCat('camisetas')">VOLTAR AO CATÁLOGO.</button>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
       <div class="products-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="product-card">
+        <div class="product-card" onclick="openProduct('polo', 'Polo traçado fino', 199.90, 'k1.png')">
           <div class="product-card-img">
-            <img src="k1.png" alt="Polo traçado fino" onerror="this.src=''; this.parentElement.style.background='#222'">
+            <img src="k1.png" alt="Polo traçado fino" onerror="this.style.display='none'; this.parentElement.classList.add('image-error')">
           </div>
           <div class="product-card-info">
             <span class="product-name">Polo traçado fino.</span>
@@ -1419,42 +1668,296 @@
 
 </div>
 
+
+<!-- ===== MODAL DO PRODUTO ===== -->
+<div id="product-overlay" class="product-overlay" onclick="closeProduct(event)">
+  <div class="product-modal" onclick="event.stopPropagation()">
+    <div class="product-modal-header">
+      <h2>PRODUTO.</h2>
+      <button class="close-btn" onclick="closeProduct()">×</button>
+    </div>
+    <div class="product-modal-body">
+      <div class="product-modal-image">
+        <img id="modal-product-image" src="" alt="">
+      </div>
+      <div class="product-modal-info">
+        <h3 id="modal-product-name"></h3>
+        <div id="modal-product-price" class="modal-price"></div>
+
+        <span class="size-label">Escolha o tamanho</span>
+        <div class="size-options">
+          <button class="size-option" onclick="selectSize(this)">P</button>
+          <button class="size-option" onclick="selectSize(this)">M</button>
+          <button class="size-option" onclick="selectSize(this)">G</button>
+          <button class="size-option" onclick="selectSize(this)">GG</button>
+        </div>
+
+        <button class="add-cart-btn" onclick="addCurrentProductToCart()">
+          ADICIONAR AO CARRINHO
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CARRINHO ===== -->
+<div id="cart-overlay" class="cart-overlay" onclick="closeCart(event)">
+  <aside class="cart-panel" onclick="event.stopPropagation()">
+    <div class="cart-header">
+      <h2>SEU CARRINHO.</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cart-items"></div>
+
+    <div id="cart-footer" class="cart-footer" style="display:none;">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total">R$0,00</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">FINALIZAR COMPRA</button>
+    </div>
+  </aside>
+</div>
+
 <script>
+  let cart = JSON.parse(localStorage.getItem('toudyCart') || '[]');
+  let currentProduct = null;
+  let selectedSize = null;
+
+  function money(value) {
+    return value.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+  }
+
+  function saveCart() {
+    localStorage.setItem('toudyCart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const badge = document.getElementById('cart-count');
+
+    if (!badge) return;
+
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
+  }
+
+  function openProduct(type, name, price, image) {
+    currentProduct = { type, name, price, image };
+    selectedSize = null;
+
+    document.getElementById('modal-product-name').textContent = name;
+    document.getElementById('modal-product-price').textContent = money(price);
+
+    const imageEl = document.getElementById('modal-product-image');
+    imageEl.src = image;
+    imageEl.alt = name;
+    imageEl.style.display = 'block';
+
+    imageEl.onerror = function() {
+      this.style.display = 'none';
+      this.parentElement.classList.add('image-error');
+    };
+
+    document.querySelectorAll('.size-option').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    document.getElementById('product-overlay').classList.add('active');
+  }
+
+  function closeProduct(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('product-overlay').classList.remove('active');
+  }
+
+  function selectSize(button) {
+    document.querySelectorAll('.size-option').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+    selectedSize = button.textContent;
+  }
+
+  function addCurrentProductToCart() {
+    if (!currentProduct) return;
+
+    if (!selectedSize) {
+      alert('Selecione um tamanho antes de adicionar ao carrinho.');
+      return;
+    }
+
+    const existing = cart.find(item =>
+      item.name === currentProduct.name &&
+      item.size === selectedSize
+    );
+
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({
+        ...currentProduct,
+        size: selectedSize,
+        quantity: 1
+      });
+    }
+
+    saveCart();
+    renderCart();
+    closeProduct();
+    openCart();
+  }
+
+  function openCart() {
+    renderCart();
+    document.getElementById('cart-overlay').classList.add('active');
+  }
+
+  function closeCart(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('cart-overlay').classList.remove('active');
+  }
+
+  function changeQuantity(index, amount) {
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+
+    saveCart();
+    renderCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+    renderCart();
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cart-items');
+    const footer = document.getElementById('cart-footer');
+
+    if (!cart.length) {
+      container.innerHTML = '<div class="cart-empty">Seu carrinho está vazio.</div>';
+      footer.style.display = 'none';
+      return;
+    }
+
+    let total = 0;
+
+    container.innerHTML = cart.map((item, index) => {
+      const subtotal = item.price * item.quantity;
+      total += subtotal;
+
+      return `
+        <div class="cart-item">
+          <img
+            src="${item.image}"
+            alt="${item.name}"
+            onerror="this.style.display='none'; this.parentElement.classList.add('image-error')"
+          >
+
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-size">Tamanho: ${item.size}</div>
+            <div class="cart-item-price">${money(subtotal)}</div>
+
+            <div class="cart-qty">
+              <button class="qty-btn" onclick="changeQuantity(${index}, -1)">−</button>
+              <span>${item.quantity}</span>
+              <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+
+            <button class="remove-item" onclick="removeFromCart(${index})">
+              REMOVER
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('cart-total').textContent = money(total);
+    footer.style.display = 'block';
+  }
+
+  function checkout() {
+    if (!cart.length) return;
+
+    alert('Carrinho pronto para finalizar! O próximo passo pode ser integrar o checkout ao Supabase.');
+  }
+
   function subscribeNewsletter() {
     const inp = document.getElementById('nl-input');
+
     if (!inp.value || !inp.value.includes('@')) {
       inp.style.borderColor = '#ff4040';
       setTimeout(() => inp.style.borderColor = '', 2000);
       return;
     }
+
     inp.value = '';
     const btn = inp.nextElementSibling;
     btn.textContent = 'INSCRITO ✓';
     btn.style.background = '#1a6e3a';
-    setTimeout(() => { btn.textContent = 'QUERO RECEBER'; btn.style.background = ''; }, 3000);
+
+    setTimeout(() => {
+      btn.textContent = 'QUERO RECEBER';
+      btn.style.background = '';
+    }, 3000);
   }
 
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+
+    const page = document.getElementById(id);
+
+    if (page) {
+      page.classList.add('active');
+    }
+
     window.scrollTo(0, 0);
   }
 
   function showCat(cat) {
-    // Show catalog page
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
     document.getElementById('catalog').classList.add('active');
-    // Switch tab
+
     document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.catalog-items').forEach(c => c.classList.remove('active'));
-    // Find and activate matching tab
+
     const tabs = document.querySelectorAll('.cat-tab');
-    const catMap = { camisetas: 0, calcas: 1, moletoms: 2, polos: 3 };
-    if (catMap[cat] !== undefined) tabs[catMap[cat]].classList.add('active');
+    const catMap = {
+      camisetas: 0,
+      calcas: 1,
+      moletoms: 2,
+      polos: 3
+    };
+
+    if (catMap[cat] !== undefined) {
+      tabs[catMap[cat]].classList.add('active');
+    }
+
     const catEl = document.getElementById('cat-' + cat);
-    if (catEl) catEl.classList.add('active');
+
+    if (catEl) {
+      catEl.classList.add('active');
+    }
+
     window.scrollTo(0, 0);
   }
+
+  // Inicializa o contador e o carrinho ao carregar a página.
+  updateCartCount();
+  renderCart();
 </script>
 </body>
 </html>
